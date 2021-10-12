@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import { toast } from "react-toastify";
 import { ToastsStore } from "react-toasts";
 import AuthForm from "../../components/auth/AuthForm";
 import client from "../../libs/api/_client";
@@ -48,7 +49,7 @@ function SignUpForm() {
       //에러 핸들링
       if (response.status === 200) {
         console.log("회원가입 성공");
-        ToastsStore.success("회원가입 완료");
+        toast.dark("🚀회원가입 완료 !");
         history.push("/signin");
       }
     } catch (error) {

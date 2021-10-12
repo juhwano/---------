@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { ToastsStore } from "react-toasts";
 import AuthForm from "../../components/auth/AuthForm";
 import AuthContext from "../../context/AuthContext";
@@ -64,7 +65,7 @@ function SignInForm() {
         setAuthInfo({ isLoggedIn: true, authInfo: result.data.data });
         //home으로 이동
         history.push("/");
-        ToastsStore.success("로그인 완료");
+        toast.dark("🚀로그인 완료 !");
       }
     } catch (error) {
       // console.log(error.response.status);

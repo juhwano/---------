@@ -12,11 +12,8 @@ import AuthProvider from "./context/providers/AuthProvider";
 import { useContext } from "react";
 import AuthContext from "./context/AuthContext";
 import AddProfilePage from "./pages/AddProfilePage";
-import {
-  ToastsContainer,
-  ToastsStore,
-  ToastsContainerPosition,
-} from "react-toasts";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   // const dispatch = useDispatch();
@@ -49,18 +46,25 @@ function App() {
     <>
       <GlobalStyles />
       <NavbarContainer />
-      <Route component={HomePage} path={["/@:username", "/"]} exact />
-      <Route component={SignInPage} exact path="/signin" />
-      <Route component={SignUpPage} exact path="/signup" />
-      <Route component={AddProfilePage} exact path="/addprofile" />
+      <Route component={HomePage} exact path={["/@:username", "/"]} />
+      <Route component={SignInPage} path="/signin" />
+      <Route component={SignUpPage} path="/signup" />
+      <Route component={AddProfilePage} path="/addprofile" />
 
       {/* <Route component={RegisterPage} path="/register" /> */}
       {/* <Route component={WritePage} path="/write" /> */}
       {/* <Route component={PostPage} path="/@:username/:postId" /> */}
-      <ToastsContainer
-        position={ToastsContainerPosition.TOP_BOTTOM}
-        store={ToastsStore}
-        lightBackground
+      <ToastContainer
+        position="bottom-center"
+        autoClose={2900}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        limit={2}
       />
     </>
   );

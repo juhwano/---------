@@ -29,8 +29,12 @@ const GlobalStyles = createGlobalStyle`
 }
   html {
     font-size: 16px;
-    font-family: Y_Spotlight;
     
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    /* user-select: none; */
   };
   em {
     /* font-weight: bolder;
@@ -41,25 +45,9 @@ const GlobalStyles = createGlobalStyle`
   strong {
     font-weight: bolder
   };
-  .toast {
-    font-size: 16px !important;
-    color: #fff !important;
-    background-color: #0e110fd5 !important;
-    border-radius: 5px !important;
-    min-height: 30px !important; 
-    width: 400px !important;
-    margin: auto !important;
-    display: inline-block !important;
-    line-height: 30px !important;
-  } 
-  .toast-info {
-    background-color: rgba(33, 33, 33, 0.8) !important;
-  }
-  .toast-warning {
-    background-color: rgba(242, 82, 24, 0.8) !important;
-  }
-  .toast-success {
-    background-color: rgba(51, 113, 246, 0.8) !important;
+  *{
+    user-select: none;
+    font-family: Y_Spotlight;
   }
 `;
 

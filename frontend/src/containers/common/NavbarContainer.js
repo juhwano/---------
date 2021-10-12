@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { useContext } from "react";
 import { useHistory } from "react-router";
+import { toast } from "react-toastify";
 import { ToastsStore } from "react-toasts";
 import NavbarComponent from "../../components/common/NavbarComponent";
 import AuthContext from "../../context/AuthContext";
@@ -18,7 +19,7 @@ function NavbarContainer() {
   const onClickLogout = () => {
     localStorage.removeItem("accessToken");
     setAuthInfo({ isLoggedIn: false, userInfo: {} });
-    ToastsStore.success("로그아웃 완료");
+    toast.dark("🚀로그아웃 완료 !");
     history.push("/");
   };
   return (

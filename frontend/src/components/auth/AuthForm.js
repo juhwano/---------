@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import palette from "../../libs/styles/palette";
@@ -53,6 +53,12 @@ const ErrorMessage = styled.div`
   text-align: center;
   font-size: 0.875rem;
   margin-top: 1rem;
+  padding: 0.2rem;
+  background-color: red;
+  border: 1px solid transparent;
+  display: block;
+  color: white;
+  border-radius: 0.3rem;
 `;
 
 const textMap = {
@@ -62,6 +68,13 @@ const textMap = {
 
 const AuthForm = ({ type, form, onChagenInput, onClickSubmit, error }) => {
   const text = textMap[type];
+  // ref를 위한 변수 선언
+  const emailRef = useRef("");
+
+  useEffect(() => {
+    emailRef.current.focus();
+  }, [emailRef]);
+
   return (
     <AuthFormBlock>
       <h3>{text}</h3>
@@ -72,6 +85,7 @@ const AuthForm = ({ type, form, onChagenInput, onClickSubmit, error }) => {
           placeholder="이메일"
           onChange={onChagenInput}
           value={form.email}
+          ref={emailRef}
         />
         {type === "register" && (
           <StyledInput
