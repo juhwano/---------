@@ -21,9 +21,15 @@ const GlobalStyles = createGlobalStyle`
       font-weight: 400;
       font-style: normal;
   }
+  @font-face {
+    font-family: 'Y_Spotlight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
   html {
     font-size: 16px;
-    font-family: Pretendard-Regular;
+    font-family: Y_Spotlight;
     
   };
   em {

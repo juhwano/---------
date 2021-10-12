@@ -61,7 +61,7 @@ const Spacer = styled.div`
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: #555555;
-  font-size: 1.3rem;
+  font-size: 1.125rem;
   cursor: pointer;
   & + & {
     margin-left: 0.8rem;
