@@ -2,6 +2,7 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
 function DropDown({ options, defaultOption, onChangeDropDown, ...rest }) {
+  console.log("defaultOption", defaultOption);
   return (
     <Dropdown
       options={options}

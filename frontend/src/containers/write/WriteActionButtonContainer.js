@@ -13,37 +13,52 @@ export const url = "http://localhost:3000";
 const WriteActionButtonsContainer = ({ history }) => {
   const { postInfo, setPostInfo } = useContext(PostContext);
   const [isEdit, setIsEdit] = useState(false);
-  console.log("postInfo", postInfo);
-  // useEffect(() => {
-  //   const { originalPostId } = postInfo;
-  //   if (originalPostId) {
-  //     //수정
-  //     setIsEdit(true);
-  //     try {
-  //       async function getData() {
-  //         //content 가져오는 통신
-  //         console.log(postInfo.originalPostId);
-  //         const response = await client.get(`/post/${postInfo.originalPostId}`);
-  //         console.log(response);
-  //         const result = response.data.data;
-  //         const { title, content, tags, category } = result;
-  //         setPostInfo({
-  //           ...postInfo,
-  //           title,
-  //           body: content,
-  //           tags,
-  //           category,
-  //         });
-  //       }
-  //       getData();
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   } else {
-  //     //등록
-  //     setIsEdit(false);
-  //   }
-  // }, []);
+
+  // 카테고리 type 숫자일 시 진행(1)
+  // const dropDownMap = {
+  //   후기 : 0,
+  //   팁 : 1,
+  //   등등: 2,
+  // }
+
+  // 카테고리 type 숫자일 시 진행(2)
+  // return 해당 object 키 반환
+  // function getKeyByValue(object, value){
+  //   return Object.keys(object).find((key) => object[key] === value);
+  // }
+
+  // 카테고리 type 숫자일 시 진행(3)
+  // category: getKeyByValue{dropDownMap, category},
+
+  useEffect(() => {
+    const { originalPostId } = postInfo;
+    if (originalPostId) {
+      //수정
+      setIsEdit(true);
+      try {
+        async function getData() {
+          //content 가져오는 통신
+          const response = await client.get(`/post/${postInfo.originalPostId}`);
+          const result = response.data.data;
+          const { title, content, tags, category } = result;
+          console.log(title, content, tags, category);
+          setPostInfo({
+            ...postInfo,
+            title,
+            content: content,
+            tags,
+            category,
+          });
+        }
+        getData();
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      //등록
+      setIsEdit(false);
+    }
+  }, []);
 
   // isEdit을 분기처리
   const token = localStorage.getItem("accessToken");

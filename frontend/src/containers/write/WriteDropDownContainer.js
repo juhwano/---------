@@ -18,7 +18,11 @@ function WriteDropDownContainer() {
   };
 
   return (
-    <WriteDropDown options={options} onChangeDropDown={onChangeDropDown} />
+    <WriteDropDown
+      options={options}
+      onChangeDropDown={onChangeDropDown}
+      defaultOption={postInfo.category}
+    />
   );
 }
 

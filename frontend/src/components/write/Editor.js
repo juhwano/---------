@@ -77,7 +77,7 @@ function Editor({ onChangeField, content, title }) {
   const onChangeTitle = (e) => {
     onChangeField({ key: "title", value: e.target.value });
   };
-
+  console.log("content", content);
   return (
     <EditorWrapper>
       <TitleInput

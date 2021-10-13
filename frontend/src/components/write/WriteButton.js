@@ -34,7 +34,7 @@ function WriteButton() {
         onClick={() => {
           setPostInfo({
             ...postInfo,
-            originalPostId: "616668c81e2c4fc006c79757",
+            originalPostId: "61668cd21e2c4fc006c7978d",
           });
 
           history.push("/write");
