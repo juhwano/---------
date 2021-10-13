@@ -9,9 +9,7 @@ function EditProfileContainer() {
     imgUrl: "",
   });
 
-  const onClickAvatar = () => {
-    console.log("??");
-  };
+  const onClickAvatar = () => {};
   return <EditProfile onClickAvatar={onClickAvatar} />;
 }
 

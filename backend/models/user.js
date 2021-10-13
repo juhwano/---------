@@ -15,8 +15,8 @@ const userSchema = new Schema({
   inoDate: { type: Date, default: null },
   verified: { type: Boolean, default: false },
   profileImage: { type: String, default: null },
-  googleId: { type: String, unique: true },
-  naverId: { type: String, unique: true },
+  // googleId: { type: String, unique: true },
+  // naverId: { type: String, unique: true },
 });
 
 // Pre - 몽구스의 middleware기능이다

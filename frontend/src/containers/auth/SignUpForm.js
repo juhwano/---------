@@ -38,6 +38,9 @@ function SignUpForm() {
 
   const onClickSubmit = async (e) => {
     e.preventDefault();
+    if (form.password !== form.passwordConfirm) {
+      return setError("🔥패스워드가 일치하지 않습니다.");
+    }
 
     console.log("error", error);
 
