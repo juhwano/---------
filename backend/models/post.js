@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const postSchema = new Schema({
   title: { type: String, default: null, required: true },
   content: { type: String, default: null, required: true },
-  category: { type: Number, default: 0 },
+  category: { type: String, default: null },
   tags: [{ type: String, default: null }],
   publishedDate: { type: Date, default: Date.now() },
   updatedDate: { type: Date, default: null },

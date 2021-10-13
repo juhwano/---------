@@ -1,7 +1,8 @@
 import React from "react";
+import AddProfileContainer from "../containers/user/AddProfileContainer";
 
 function AddProfilePage() {
-  return <div>dd</div>;
+  return <AddProfileContainer />;
 }
 
 export default AddProfilePage;

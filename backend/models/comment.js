@@ -15,6 +15,7 @@ const commentSchema = new Schema(
     isDeleted: { type: Boolean, default: false },
     commentDate: { type: Date, default: Date.now() },
     updatedAt: { type: Date },
+    likes: { type: Number, default: 0 },
   },
   {
     toObject: { viruals: true },

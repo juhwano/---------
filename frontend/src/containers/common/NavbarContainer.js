@@ -2,9 +2,9 @@ import React, { useCallback, useState } from "react";
 import { useContext } from "react";
 import { useHistory } from "react-router";
 import { toast } from "react-toastify";
-import { ToastsStore } from "react-toasts";
 import NavbarComponent from "../../components/common/NavbarComponent";
 import AuthContext from "../../context/AuthContext";
+import client from "../../libs/api/_client";
 
 function NavbarContainer() {
   const history = useHistory();
@@ -12,13 +12,15 @@ function NavbarContainer() {
   const { authInfo, setAuthInfo } = useContext(AuthContext);
   const [visible, setVisible] = useState(false);
 
-  const onClickProfileImg = useCallback(() => {
+  const onClickProfileImg = () => {
     setVisible(!visible);
-  }, [visible]);
+  };
 
   const onClickLogout = () => {
     localStorage.removeItem("accessToken");
-    setAuthInfo({ isLoggedIn: false, userInfo: {} });
+
+    client.defaults.headers.common["Authorization"] = ``;
+    setAuthInfo({ ...authInfo, isLoggedIn: false });
     toast.dark("🚀로그아웃 완료 !");
     history.push("/");
   };

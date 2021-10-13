@@ -32,7 +32,7 @@ const jwtModule = {
         return -3;
       }
     }
-    console.log('decoded', decoded);
+    console.log('decoded 완료', decoded);
     return decoded;
   },
 };

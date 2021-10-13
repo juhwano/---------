@@ -29,26 +29,33 @@ const GlobalStyles = createGlobalStyle`
 }
   html {
     font-size: 16px;
-    
     -ms-user-select: none; 
     -moz-user-select: -moz-none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     /* user-select: none; */
   };
+  body{
+    font-family: Y_Spotlight;
+    line-height: 1.5;
+  }
   em {
     /* font-weight: bolder;
     color: orange */
     font-style: italic;
   };
-
+  a{
+    text-decoration:none;
+  }
   strong {
     font-weight: bolder
   };
-  *{
-    user-select: none;
+  *, *::before, *::after {
+    box-sizing: border-box;
     font-family: Y_Spotlight;
   }
+  
+
 `;
 
 export default GlobalStyles;

@@ -28,7 +28,6 @@ function SignUpForm() {
           setError("");
         }
       }
-
       setForm({
         ...form,
         [name]: value,
@@ -39,6 +38,9 @@ function SignUpForm() {
 
   const onClickSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("error", error);
+
     try {
       const response = await client.post("/auth/signup", {
         email: form.email,

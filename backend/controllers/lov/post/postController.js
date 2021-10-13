@@ -55,7 +55,7 @@ const postController = {
       publishedDate: Date.now(),
       writer: userInfo._id,
     });
-
+    console.log('게시물 생성', postModel);
     try {
       const result = await postModel.save();
       res.status(code.OK).json({
@@ -63,6 +63,7 @@ const postController = {
         data: result,
       });
     } catch (error) {
+      console.error(error);
       res.status(code.INTERNAL_SERVER_ERROR).json({
         message: 'DB 서버 에러',
       });

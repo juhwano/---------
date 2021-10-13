@@ -31,13 +31,13 @@ const authModule = {
     // verified가 true가 되지 않더라도 보여주고 싶다.
     // http://localhost:3000/api/auth/profile
     // path : profile
-    if (!decoded.verified) {
-      if (req.path !== '/profile') {
-        return res.status(401).json({
-          message: '추가 정보 입력 필요',
-        });
-      }
-    }
+    // if (!decoded.verified) {
+    //   if (req.path !== '/profile') {
+    //     return res.status(401).json({
+    //       message: '추가 정보 입력 필요',
+    //     });
+    //   }
+    // }
     //추가 정보 미 입력
     // if (decoded.verified === false) {
     //   return res.status(code.UNAUTHORIZED).json({
@@ -56,6 +56,7 @@ const authModule = {
     }
     //찾은 값을 req.userInfo 변수에 담아준다.
     req.userInfo = userInfo;
+    console.log('찾은 유저값', req.userInfo);
     //전체 토큰
     req.token = decoded;
     // 다음 미들웨어로 넘겨준다.

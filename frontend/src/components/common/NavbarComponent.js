@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Responsive from "./Responsive";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import MainLogo from "../../assets/logo/logo.png";
 import ButtonComponent from "./ButtonComponent";
 import SearchBox from "./search/SearchBox";
@@ -24,6 +25,7 @@ const NavbarWrap = styled.div`
   border-bottom: 1px solid #dbdbdb;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
   height: 5rem;
+  z-index: 5;
 `;
 
 const Wrapper = styled(Responsive)`
@@ -49,16 +51,17 @@ const Wrapper = styled(Responsive)`
 
 const StyledLogoWrapper = styled(Link)`
   display: inline-block;
-  padding: 0.5rem;
+  padding-top: 0.2rem;
   font-size: 1.25rem;
-  line-height: inherit;
   white-space: nowrap;
+  height: 5.6rem;
 `;
 
 const StyledLogo = styled.img`
   display: inline;
   position: relative;
-  height: 8rem;
+  height: 5.3rem;
+  object-fit: cover;
 `;
 
 const Spacer = styled.div`
@@ -171,7 +174,7 @@ const ProfileImage = styled.img`
 const ProfileBoard = styled.div`
   position: absolute;
   right: 0rem;
-  bottom: -7.5rem;
+  bottom: -8.5rem;
   background-color: #ffffff;
   width: 10rem;
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -187,9 +190,16 @@ const ProfileItem = styled.div`
     border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
   &:hover {
-    color: #fff;
-    background-color: #00b8ff;
+    box-shadow: inset 0.475rem 0 #00b8ff;
   }
+`;
+
+const ProfileBtn = styled.button`
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+  font-size: 1rem;
+  text-align: center;
 `;
 
 function NavbarComponent({
@@ -199,6 +209,7 @@ function NavbarComponent({
   onClickLogout,
 }) {
   console.log("visible", visible);
+  const history = useHistory();
   return (
     <>
       <NavbarWrap>
@@ -236,7 +247,18 @@ function NavbarComponent({
                 </ProfileImageWrap>
                 {visible && (
                   <ProfileBoard>
-                    <ProfileItem>회원 정보 변경</ProfileItem>
+                    <ProfileItem>
+                      <ProfileBtn
+                        onClick={() => {
+                          history.push({
+                            pathname: "/addprofile",
+                            state: { authInfo: authInfo },
+                          });
+                        }}
+                      >
+                        회원 정보 변경
+                      </ProfileBtn>
+                    </ProfileItem>
                     <ProfileItem onClick={onClickLogout}>로그아웃</ProfileItem>
                   </ProfileBoard>
                 )}

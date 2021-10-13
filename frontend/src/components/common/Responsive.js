@@ -6,6 +6,8 @@ const ResponsiveWrapper = styled.div`
   padding-right: 1rem;
   width: 1024px;
   margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
 
   @media (max-width: 1024px) {
     width: 768px;

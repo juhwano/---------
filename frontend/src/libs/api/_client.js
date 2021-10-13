@@ -12,7 +12,7 @@ client.interceptors.response.use(
   },
   (error) => {
     const { status, data } = error.response;
-    console.log(status);
+    console.log("status", status);
 
     if (status === 401) {
       history.push("/addprofile");
