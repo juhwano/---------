@@ -11,12 +11,13 @@ import { getProfile } from "./modules/user";
 import AuthProvider from "./context/providers/AuthProvider";
 import { useContext } from "react";
 import AuthContext from "./context/AuthContext";
-import AddProfilePage from "./pages/AddProfilePage";
+// import AddProfilePage from "./pages/EditProfilePage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import WritePage from "./pages/WritePage";
 import Error from "./pages/Error";
+import EditProfilePage from "./pages/EditProfilePage";
 
 const ContentContainer = styled.div`
   background: #fff;
@@ -73,7 +74,7 @@ function App() {
             <Route component={HomePage} exact path={["/@:username", "/"]} />
             <Route component={SignInPage} path="/signin" />
             <Route component={SignUpPage} path="/signup" />
-            <Route component={AddProfilePage} path="/addprofile" />
+            <Route component={EditProfilePage} path="/edit/profile" />
 
             {/* <Route component={RegisterPage} path="/register" /> */}
             <Route component={WritePage} path="/write" />

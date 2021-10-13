@@ -7,6 +7,8 @@ function WriteDropDownContainer() {
 
   const { postInfo, setPostInfo } = useContext(PostContext);
 
+  const defaultOption = postInfo.category;
+
   const onChangeDropDown = (payload) => {
     // console.log("dropdown값", payload.value);
     const dropdownValue = payload.value;
@@ -21,7 +23,7 @@ function WriteDropDownContainer() {
     <WriteDropDown
       options={options}
       onChangeDropDown={onChangeDropDown}
-      defaultOption={postInfo.category}
+      defaultOption={defaultOption}
     />
   );
 }

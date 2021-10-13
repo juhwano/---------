@@ -29,12 +29,18 @@ const QuillWrapper = styled.div`
     font-size: 1.5rem;
     line-height: 1.5;
   }
-  .ql-editor.ql-blank:before {
+  /* .ql-editor.ql-blank:before {
     left: 0px;
-  }
+  } */
 `;
 
-function Editor({ onChangeField, content, title }) {
+function Editor({
+  //onChangeBody,
+  //onChangeTitle
+  onChangeField,
+  content,
+  title,
+}) {
   const modules = {
     toolbar: [
       //[{ 'font': [] }],
@@ -90,7 +96,7 @@ function Editor({ onChangeField, content, title }) {
           theme="snow"
           modules={modules}
           formats={formats}
-          value={content || ""}
+          value={content}
           // onChangeBody가 한번 더 호출, 매개변수가 있으면 화살표 함수를 더 적어준다.
           onChange={(content, delta, source, editor) => {
             if (source === "user") {

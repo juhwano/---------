@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Editor from "../../components/write/Editor";
 import PostContext from "../../context/PostContext";
+import client from "../../libs/api/_client";
 
 function EditorContainer() {
   const { postInfo, setPostInfo } = useContext(PostContext);
@@ -13,6 +14,23 @@ function EditorContainer() {
       [key]: value,
     });
   };
+
+  // useEffect(() => {
+  //   async function getData() {
+  //     const response = await client.get(
+  //       `/api/posts/${postInfo.originalPostId}`
+  //     );
+  //     const result = response.data.data;
+  //     const { title, content, tags } = result;
+  //     setPostInfo({
+  //       ...postInfo,
+  //       title: title,
+  //       body: content,
+  //       tags: tags,
+  //     });
+  //   }
+  //   getData();
+  // }, []);
 
   return (
     <Editor title={title} content={content} onChangeField={onChangeField} />

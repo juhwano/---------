@@ -16,6 +16,11 @@ function NavbarContainer() {
     setVisible(!visible);
   };
 
+  const onClickEditProfile = () => {
+    history.push("/edit/profile");
+    setVisible(false);
+  };
+
   const onClickLogout = () => {
     localStorage.removeItem("accessToken");
 
@@ -23,6 +28,7 @@ function NavbarContainer() {
     setAuthInfo({ ...authInfo, isLoggedIn: false });
     toast.dark("🚀로그아웃 완료 !");
     history.push("/");
+    setVisible(false);
   };
   return (
     <NavbarComponent
@@ -30,6 +36,7 @@ function NavbarContainer() {
       visible={visible}
       onClickLogout={onClickLogout}
       onClickProfileImg={onClickProfileImg}
+      onClickEditProfile={onClickEditProfile}
     />
   );
 }

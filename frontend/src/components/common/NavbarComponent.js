@@ -25,7 +25,7 @@ const NavbarWrap = styled.div`
   border-bottom: 1px solid #dbdbdb;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
   height: 5rem;
-  z-index: 5;
+  z-index: 1;
 `;
 
 const Wrapper = styled(Responsive)`
@@ -207,6 +207,7 @@ function NavbarComponent({
   onClickProfileImg,
   visible,
   onClickLogout,
+  onClickEditProfile,
 }) {
   console.log("visible", visible);
   const history = useHistory();
@@ -247,17 +248,8 @@ function NavbarComponent({
                 </ProfileImageWrap>
                 {visible && (
                   <ProfileBoard>
-                    <ProfileItem>
-                      <ProfileBtn
-                        onClick={() => {
-                          history.push({
-                            pathname: "/addprofile",
-                            state: { authInfo: authInfo },
-                          });
-                        }}
-                      >
-                        회원 정보 변경
-                      </ProfileBtn>
+                    <ProfileItem onClick={onClickEditProfile}>
+                      회원 정보 변경
                     </ProfileItem>
                     <ProfileItem onClick={onClickLogout}>로그아웃</ProfileItem>
                   </ProfileBoard>
