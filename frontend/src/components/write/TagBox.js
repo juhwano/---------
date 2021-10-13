@@ -74,6 +74,7 @@ const TagList = React.memo(({ tags, onRemove }) => (
 ));
 
 function TagBox({ onChangeTags, tags }) {
+  console.log("tags", tags);
   const [input, setInput] = useState("");
   const [localTags, setLocalTags] = useState([]);
 

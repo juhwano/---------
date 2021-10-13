@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 // import { useSelector, useDispatch } from "react-redux";
-import { withRouter, useParams } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import WriteActionButton from "../../components/write/WriteActionButton";
 import client from "../../libs/api/_client";
 import { toast } from "react-toastify";
@@ -13,50 +13,58 @@ export const url = "http://localhost:3000";
 const WriteActionButtonsContainer = ({ history }) => {
   const { postInfo, setPostInfo } = useContext(PostContext);
   const [isEdit, setIsEdit] = useState(false);
+  console.log("postInfo", postInfo);
+  // useEffect(() => {
+  //   const { originalPostId } = postInfo;
+  //   if (originalPostId) {
+  //     //수정
+  //     setIsEdit(true);
+  //     try {
+  //       async function getData() {
+  //         //content 가져오는 통신
+  //         console.log(postInfo.originalPostId);
+  //         const response = await client.get(`/post/${postInfo.originalPostId}`);
+  //         console.log(response);
+  //         const result = response.data.data;
+  //         const { title, content, tags, category } = result;
+  //         setPostInfo({
+  //           ...postInfo,
+  //           title,
+  //           body: content,
+  //           tags,
+  //           category,
+  //         });
+  //       }
+  //       getData();
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   } else {
+  //     //등록
+  //     setIsEdit(false);
+  //   }
+  // }, []);
+
   // isEdit을 분기처리
   const token = localStorage.getItem("accessToken");
-  const { path } = useParams();
   const onPublish = async () => {
     try {
-      if (isEdit) {
-        // true(수정)
-        // postId <- params
-        client.defaults.headers.common["Authorization"] = token;
-        const response = await client.post(`/post/${path}`, postInfo);
-        console.log("response", response);
-        //에러 핸들링
-        if (response.status === 200) {
-          console.log("글수정 성공");
-          toast.dark("🚀글수정 완료 !");
-          setPostInfo({
-            title: "",
-            content: "",
-            tags: [],
-            category: "",
-          });
-          setIsEdit(false);
+      client.defaults.headers.common["Authorization"] = token;
+      const response = await client.post("/post", postInfo);
+      console.log("response", response);
+      //에러 핸들링
+      if (response.status === 200) {
+        console.log("글쓰기 성공");
+        toast.dark("🚀글쓰기 완료 !");
+        setPostInfo({
+          title: "",
+          content: "",
+          tags: [],
+          category: "",
+        });
+        setIsEdit(false);
 
-          history.push("/");
-        }
-      } else {
-        //false(등록)
-        client.defaults.headers.common["Authorization"] = token;
-        const response = await client.post("/post", postInfo);
-        console.log("response", response);
-        //에러 핸들링
-        if (response.status === 200) {
-          console.log("글쓰기 성공");
-          toast.dark("🚀글쓰기 완료 !");
-          setPostInfo({
-            title: "",
-            content: "",
-            tags: [],
-            category: "",
-          });
-          setIsEdit(true);
-
-          history.push("/");
-        }
+        history.push("/");
       }
     } catch (error) {
       if (error.response.status === 409) {

@@ -7,6 +7,7 @@ const PostProvider = ({ children }) => {
     title: "",
     content: "",
     category: "",
+    originalPostId: "",
   });
 
   return (

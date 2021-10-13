@@ -91,9 +91,12 @@ function Editor({ onChangeField, content, title }) {
           modules={modules}
           formats={formats}
           value={content || ""}
-          onChange={(content, delta, source, editor) =>
-            onChangeBody(editor.getHTML())
-          }
+          // onChangeBody가 한번 더 호출, 매개변수가 있으면 화살표 함수를 더 적어준다.
+          onChange={(content, delta, source, editor) => {
+            if (source === "user") {
+              onChangeBody(editor.getHTML());
+            }
+          }}
         />
       </QuillWrapper>
     </EditorWrapper>
