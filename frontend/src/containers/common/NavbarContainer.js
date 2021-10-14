@@ -5,12 +5,14 @@ import { toast } from "react-toastify";
 import NavbarComponent from "../../components/common/NavbarComponent";
 import AuthContext from "../../context/AuthContext";
 import client from "../../libs/api/_client";
+import Cookies from "universal-cookie";
 
 function NavbarContainer() {
   const history = useHistory();
   // useContext로 authInfo 받아와서 props로 활용
   const { authInfo, setAuthInfo } = useContext(AuthContext);
   const [visible, setVisible] = useState(false);
+  const cookies = new Cookies();
 
   const onClickProfileImg = () => {
     setVisible(!visible);
@@ -26,6 +28,8 @@ function NavbarContainer() {
 
     client.defaults.headers.common["Authorization"] = ``;
     setAuthInfo({ ...authInfo, isLoggedIn: false });
+    cookies.remove("userToken");
+    cookies.remove("userName");
     toast.dark("🚀로그아웃 완료 !");
     history.push("/");
     setVisible(false);

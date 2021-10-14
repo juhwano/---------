@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Responsive from "./Responsive";
 import { Link } from "react-router-dom";
@@ -13,6 +13,9 @@ import {
   AiOutlineComment,
   // AiOutlineMenu,
 } from "react-icons/ai";
+import AuthContext from "../../context/AuthContext";
+import ProfileContext from "../../context/ProfileContext";
+import Cookies from "universal-cookie";
 
 const NavbarWrap = styled.div`
   display: flex;
@@ -210,6 +213,9 @@ function NavbarComponent({
   onClickEditProfile,
 }) {
   const history = useHistory();
+  const userImage = localStorage.getItem("userImage");
+  const cookies = new Cookies();
+  const nickName = cookies.get("userName");
   return (
     <>
       <NavbarWrap>
@@ -237,7 +243,7 @@ function NavbarComponent({
               </SearchBlock>
               <IconWrapper className="iconWrapper">
                 {/* <Link to="/room"> */}
-                <AiOutlineComment onClick={() => history.push("/room")} />
+                <AiOutlineComment onClick={() => history.push("/chat")} />
                 {/* </Link> */}
               </IconWrapper>
               <IconWrapper className="iconWrapper">
@@ -245,7 +251,11 @@ function NavbarComponent({
               </IconWrapper>
               <ProfileWrap>
                 <ProfileImageWrap onClick={onClickProfileImg}>
-                  <ProfileImage src={ProfileAvatar} alt="profile-image" />
+                  {userImage !== "null" ? (
+                    <ProfileImage src={userImage} alt="profile-image" />
+                  ) : (
+                    <ProfileImage src={ProfileAvatar} alt="profile-image" />
+                  )}
                 </ProfileImageWrap>
                 {visible && (
                   <ProfileBoard>

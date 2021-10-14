@@ -132,10 +132,7 @@ const PostTagsItem = styled.div`
   }
 `;
 
-function PostItem({ post, gender, onClickPost }) {
-  console.log("post null처리", post);
-  console.log("사람", post.writer);
-  console.log("post.tags", post.tags);
+function PostItem({ post, onClickPost }) {
   // let inoDay = dayjs(post.writer.inoDate); // 접종날짜
 
   return (

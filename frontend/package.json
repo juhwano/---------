@@ -30,6 +30,7 @@
     "socket.io-client": "^4.2.0",
     "styled-components": "^5.3.1",
     "styled-reset": "^4.3.4",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

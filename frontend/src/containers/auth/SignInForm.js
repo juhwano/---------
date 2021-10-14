@@ -5,12 +5,12 @@ import { toast } from "react-toastify";
 import AuthForm from "../../components/auth/AuthForm";
 import AuthContext from "../../context/AuthContext";
 import client from "../../libs/api/_client";
+import Cookies from "universal-cookie";
 
 function SignInForm() {
   const history = useHistory();
   // context API 아무때나 불러올 수 있다
   const { setAuthInfo } = useContext(AuthContext);
-
   const [error, setError] = useState("");
   const [form, setForm] = useState({
     email: "",
@@ -18,6 +18,7 @@ function SignInForm() {
     passwordConfirm: "",
     nickName: "",
   });
+  const cookies = new Cookies();
 
   const onChagenInput = useCallback(
     (e) => {
@@ -48,7 +49,9 @@ function SignInForm() {
       if (response.status === 200) {
         const accessToken = response.data.accessToken;
         localStorage.setItem("accessToken", accessToken);
-
+        cookies.set("userToken", accessToken, {
+          path: "/",
+        });
         /*
           axios({
             headers : {
@@ -63,6 +66,11 @@ function SignInForm() {
         //전역 상태관리
         setAuthInfo({ isLoggedIn: true, authInfo: result.data.data });
         //home으로 이동
+        console.log(result.data.data);
+        cookies.set("userName", result.data.data.nickName, {
+          path: "/",
+        });
+        localStorage.setItem("userImage", result.data.data.profileImage);
         history.push("/");
         toast.dark("🚀로그인 완료 !");
       }

@@ -14,28 +14,26 @@ import EditProfilePage from "./pages/EditProfilePage";
 // import AuthContext from "./context/AuthContext";
 // import ChatUserContext from "./context/chat/ChatUserContext";
 // import ChatRoomContext from "./context/chat/ChatRoomContext";
-import ChatRoomPage from "./pages/ChatRoomPage";
 import ChatPage from "./pages/ChatPage";
 import AuthContext from "./context/AuthContext";
-import ChatUserContext from "./context/chat/ChatUserContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DetailPostPage from "./pages/DetailPostPage";
 
-const ContentContainer = styled.div`
-  background: #f7f7f7;
-`;
-const ContentBlock = styled.div`
-  max-width: 48rem;
-  min-height: 100vh;
-  border-color: #dbdbdb;
-  border-left: 1px solid #dbdbdb;
-  border-right: 1px solid #dbdbdb;
-  background-color: #fff;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-`;
+// const ContentContainer = styled.div`
+//   background: #f7f7f7;
+// `;
+// const ContentBlock = styled.div`
+//   max-width: 48rem;
+//   min-height: 100vh;
+//   border-color: #dbdbdb;
+//   border-left: 1px solid #dbdbdb;
+//   border-right: 1px solid #dbdbdb;
+//   background-color: #fff;
+//   width: 100%;
+//   margin-left: auto;
+//   margin-right: auto;
+// `;
 
 function App() {
   // const dispatch = useDispatch();
@@ -43,10 +41,7 @@ function App() {
   //   isLoggedIn: user.isLoggedIn,
   // }));
   // 가져와서 useState와 똑같이 활용
-  const { setAuthInfo } = useContext(AuthContext);
-  const { setUserName } = useContext(ChatUserContext);
-  // const { roomName, setRoomName } = useContext(ChatRoomContext);
-
+  const { authInfo, setAuthInfo } = useContext(AuthContext);
   // 통신 진행 후 상태변경(토큰 유무에 따라)
   useEffect(() => {
     const token = localStorage.getItem("accessToken")
@@ -58,14 +53,14 @@ function App() {
           client.defaults.headers.common["Authorization"] = `${token}`;
           const response = await client.get("/auth/profile");
           setAuthInfo({ isLoggedIn: true, authInfo: response.data.data });
-          setUserName(response.data.data.nickName);
+          console.log("authInfo", authInfo);
         } catch (error) {
           console.error(error);
         }
       }
     }
     getAccount();
-  }, [setAuthInfo, setUserName]);
+  }, [setAuthInfo]);
 
   return (
     <>
@@ -75,8 +70,8 @@ function App() {
       </header>
       {/* <div style={{ height: "1rem" }}></div> */}
       <main>
-        <ContentContainer>
-          <ContentBlock>
+        <div>
+          <div>
             <Switch>
               <Route component={HomePage} exact path={["/@:username", "/"]} />
               <Route component={SignInPage} exact path="/signin" />
@@ -88,15 +83,13 @@ function App() {
               {/* <Route component={PostPage} path="/@:username/:postId" /> */}
               <Route component={DetailPostPage} exact path="/post/:postId" />
 
-              {/* 채팅 대기실 */}
-              <Route component={ChatRoomPage} exact path="/room" />
               {/* 채팅 */}
               <Route component={ChatPage} exact path="/chat" />
 
               <Route render={Error} />
             </Switch>
-          </ContentBlock>
-        </ContentContainer>
+          </div>
+        </div>
       </main>
       <ToastContainer
         position="bottom-center"
