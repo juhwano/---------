@@ -9,7 +9,7 @@ const userSchema = new Schema({
   nickName: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   type: { type: String, default: null },
-  age: { type: Number, default: null },
+  age: { type: String, default: null },
   gender: { type: String, enum: ['male', 'female'], default: 'male' },
   degree: { type: Number, default: 0 },
   inoDate: { type: Date, default: null },

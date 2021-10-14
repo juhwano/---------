@@ -37,6 +37,7 @@ export default function ChatInput({ userName, socket }) {
   const [chatMessage, setChatMessage] = useState("");
 
   const handleSubmit = (e) => {
+    console.log("e", e);
     e.preventDefault();
     console.log("메세지 보내는 곳");
     console.log(userName);

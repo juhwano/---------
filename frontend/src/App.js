@@ -18,7 +18,7 @@ import ChatRoomPage from "./pages/ChatRoomPage";
 import ChatPage from "./pages/ChatPage";
 import AuthContext from "./context/AuthContext";
 import ChatUserContext from "./context/chat/ChatUserContext";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ContentContainer = styled.div`

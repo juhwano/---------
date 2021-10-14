@@ -7,12 +7,9 @@ const upload = require('../../../modules/awsUpload');
 // 로그인 유저 정보 받아오기
 router.get('/profile', authModule.loggedIn, authController.readUser);
 // 회원 정보 수정
-router.put(
-  '/profile',
-  authModule.loggedIn,
-  authController.updateUser,
-);
-router.post('/image', upload.single('/img'), )
+router.put('/profile', authModule.loggedIn, authController.updateUser);
+//이미지 업로드
+router.post('/image', upload.single('img'), authController.uploadImage);
 
 // 회원 삭제
 router.delete('/profile', authModule.loggedIn, authController.deleteUser);

@@ -3,7 +3,7 @@ import ProfileContext from "../ProfileContext";
 
 const ProfileProvider = ({ children }) => {
   const [profileInfo, setProfileInfo] = useState({
-    age: 0,
+    age: "",
     gender: "",
     type: "",
     degree: 0,

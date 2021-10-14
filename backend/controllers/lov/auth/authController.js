@@ -103,19 +103,18 @@ const authController = {
   },
   updateUser: async (req, res) => {
     const userInfo = req.userInfo;
-    const profileImage = req.file;
-
     try {
-      const { age, gender, degree, inoDate } = req.body;
+      const { type, age, gender, degree, inoDate, imgURL } = req.body;
 
       const result = await user.findByIdAndUpdate(
         userInfo._id,
         {
+          type, //백신 종류
           age,
           gender,
-          degree,
+          degree, //접종 차수
           inoDate,
-          profileImage: profileImage.location,
+          profileImage: imgURL,
           verified: true,
         },
         { new: true },
@@ -125,14 +124,16 @@ const authController = {
         email: result.email,
         verified: result.verified,
       };
-      // 생성한 페이로드를 토큰 생성할 때 파라미터로 넘겨준다
+      // 토큰 생성
       const token = jwtModule.create(payload);
+
       res.status(code.OK).json({
         message: '수정 성공',
-        data: result,
+        // data: result,
         accessToken: token,
       });
     } catch (error) {
+      console.error(error);
       res.status(code.INTERNAL_SERVER_ERROR).json({
         message: '수정 실패',
         error,
@@ -183,6 +184,20 @@ const authController = {
       console.error(error);
       res.status(code.BAD_REQUEST).json({
         message: '메일 발송 실패',
+      });
+    }
+  },
+  uploadImage: (req, res) => {
+    // 업로드하고 난 후 결과물
+    const img = req.file;
+    if (img) {
+      res.status(200).json({
+        message: '이미지 업로드 완료',
+        imgUrl: img.location,
+      });
+    } else {
+      res.status(400).json({
+        message: '이미지 업로드 실패',
       });
     }
   },

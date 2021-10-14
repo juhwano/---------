@@ -48,19 +48,31 @@ function EditProfile({
   profileImg,
   onChangeDropDown,
   onChangeCalender,
-  onChangeAge,
 }) {
+  const ageOptions = [
+    { value: "영유아", label: "영유아", key: "age" },
+    { value: "10", label: "10대", key: "age" },
+    { value: "20", label: "20대", key: "age" },
+    { value: "30", label: "30대", key: "age" },
+    { value: "40", label: "40대", key: "age" },
+    { value: "50", label: "50대", key: "age" },
+    { value: "60", label: "60대", key: "age" },
+    { value: "70", label: "70대", key: "age" },
+    { value: "80", label: "80대", key: "age" },
+    { value: "90", label: "90대", key: "age" },
+  ];
+
   const genderOptions = [
     { value: "male", label: "남자", key: "gender" },
     { value: "female", label: "여자", key: "gender" },
   ];
 
   const vachineOptions = [
-    { value: "MD", label: "모더나", key: "vachine" },
-    { value: "PF", label: "화이자", key: "vachine" },
-    { value: "AZ", label: "아스트라제네카", key: "vachine" },
-    { value: "JS", label: "얀센", key: "vachine" },
-    { value: "ETC", label: "기타", key: "vachine" },
+    { value: "MD", label: "모더나", key: "type" },
+    { value: "PF", label: "화이자", key: "type" },
+    { value: "AZ", label: "아스트라제네카", key: "type" },
+    { value: "JS", label: "얀센", key: "type" },
+    { value: "ETC", label: "기타", key: "type" },
   ];
 
   const degreeOptions = [
@@ -81,9 +93,13 @@ function EditProfile({
       </EditItemBlock>
       <EditItemBlock>
         <EditLabelWrap>
-          <BoldLabel>나이 입력하세요</BoldLabel>
+          <BoldLabel>나이 선택</BoldLabel>
         </EditLabelWrap>
-        <EditInput type="number" onChange={onChangeAge} />
+        <StyledDropDown
+          onChangeDropDown={onChangeDropDown}
+          options={ageOptions}
+          myPlaceholder={"나이를 선택 해주세요."}
+        />
       </EditItemBlock>
       <EditItemBlock>
         <EditLabelWrap>
