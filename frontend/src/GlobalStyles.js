@@ -33,6 +33,8 @@ const GlobalStyles = createGlobalStyle`
     -moz-user-select: -moz-none;
     -webkit-user-select: none;
     -khtml-user-select: none;
+    min-height: 100vh;
+    
     /* user-select: none; */
   };
   body{

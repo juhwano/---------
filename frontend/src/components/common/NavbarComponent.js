@@ -237,7 +237,9 @@ function NavbarComponent({
                 </SearchWrapper>
               </SearchBlock>
               <IconWrapper className="iconWrapper">
-                <AiOutlineComment />
+                {/* <Link to="/room"> */}
+                <AiOutlineComment onClick={() => history.push("/room")} />
+                {/* </Link> */}
               </IconWrapper>
               <IconWrapper className="iconWrapper">
                 <AiOutlineBell />

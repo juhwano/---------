@@ -11,6 +11,8 @@ import createSagaMiddleware from "redux-saga";
 import AuthProvider from "./context/providers/AuthProvider";
 import { createBrowserHistory } from "history";
 import PostProvider from "./context/providers/PostProvider";
+import ChatUserProvider from "./context/providers/chat/ChatUserProvider";
+import ChatRoomProvider from "./context/providers/chat/ChatRoomProvider";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -28,13 +30,17 @@ export const history = createBrowserHistory();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter history={history}>
-      <PostProvider>
-        <AuthProvider>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </AuthProvider>
-      </PostProvider>
+      <ChatRoomProvider>
+        <ChatUserProvider>
+          <PostProvider>
+            <AuthProvider>
+              <Provider store={store}>
+                <App />
+              </Provider>
+            </AuthProvider>
+          </PostProvider>
+        </ChatUserProvider>
+      </ChatRoomProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

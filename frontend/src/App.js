@@ -4,13 +4,8 @@ import GlobalStyles from "./GlobalStyles";
 import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import client from "./libs/api/_client";
-import { getProfile } from "./modules/user";
-import AuthProvider from "./context/providers/AuthProvider";
-import { useContext } from "react";
-import AuthContext from "./context/AuthContext";
 // import AddProfilePage from "./pages/EditProfilePage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,6 +13,13 @@ import styled from "styled-components";
 import WritePage from "./pages/WritePage";
 import Error from "./pages/Error";
 import EditProfilePage from "./pages/EditProfilePage";
+// import AuthContext from "./context/AuthContext";
+// import ChatUserContext from "./context/chat/ChatUserContext";
+// import ChatRoomContext from "./context/chat/ChatRoomContext";
+import ChatRoomPage from "./pages/ChatRoomPage";
+import ChatPage from "./pages/ChatPage";
+import AuthContext from "./context/AuthContext";
+import ChatUserContext from "./context/chat/ChatUserContext";
 
 const ContentContainer = styled.div`
   background: #fff;
@@ -42,6 +44,9 @@ function App() {
   // }));
   // 가져와서 useState와 똑같이 활용
   const { authInfo, setAuthInfo } = useContext(AuthContext);
+  const { userName, setUserName } = useContext(ChatUserContext);
+  // const { roomName, setRoomName } = useContext(ChatRoomContext);
+
   // 통신 진행 후 상태변경(토큰 유무에 따라)
   useEffect(() => {
     const token = localStorage.getItem("accessToken")
@@ -53,9 +58,9 @@ function App() {
           client.defaults.headers.common["Authorization"] = `${token}`;
           const response = await client.get("/auth/profile");
           setAuthInfo({ isLoggedIn: true, authInfo: response.data.data });
-          console.log(response);
+          setUserName(response.data.data.nickName);
         } catch (error) {
-          console.log("ee");
+          console.error(error);
         }
       }
     }
@@ -72,13 +77,19 @@ function App() {
         <ContentBlock>
           <Switch>
             <Route component={HomePage} exact path={["/@:username", "/"]} />
-            <Route component={SignInPage} path="/signin" />
-            <Route component={SignUpPage} path="/signup" />
-            <Route component={EditProfilePage} path="/edit/profile" />
+            <Route component={SignInPage} exact path="/signin" />
+            <Route component={SignUpPage} exact path="/signup" />
+            <Route component={EditProfilePage} exact path="/edit/profile" />
 
             {/* <Route component={RegisterPage} path="/register" /> */}
-            <Route component={WritePage} path="/write" />
+            <Route component={WritePage} exact path="/write" />
             {/* <Route component={PostPage} path="/@:username/:postId" /> */}
+
+            {/* 채팅 대기실 */}
+            <Route component={ChatRoomPage} exact path="/room" />
+            {/* 채팅 */}
+            <Route component={ChatPage} exact path="/chat" />
+
             <Route render={Error} />
             <ToastContainer
               position="bottom-center"
