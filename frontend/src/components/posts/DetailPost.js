@@ -4,22 +4,27 @@ import { BsGenderMale } from "react-icons/bs";
 import { BsGenderFemale } from "react-icons/bs";
 import styled from "styled-components";
 import Responsive from "../common/Responsive";
+import Comment from "../common/comment/Comment";
 
 const DetailWrap = styled(Responsive)`
   margin-top: 3rem;
   margin-bottom: 4rem;
 `;
 
-const PostsListContainer = styled.div`
+const DetailContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const PostItemBlock = styled.div`
-  padding: 1rem 1rem;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
+const DetailPostBlock = styled.div`
+  max-width: 50rem;
+  box-sizing: border-box;
+  position: static;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
   & + & {
     margin-top: 2rem;
   }
@@ -125,42 +130,49 @@ function DetailPost(postInfo) {
   const { gender } = postInfo;
   return (
     <DetailWrap>
-      <PostItemBlock>
-        <ProfileWrap>
-          <ProfileImageWrap>
-            <ProfileImage src={DefaultAvatar} />
-          </ProfileImageWrap>
-          <PostItemInfoWrap>
-            <ProfileInfoWrap>
-              <span className="nickName">
-                이동훈
-                {gender === "male" ? <StyledMaleIcon /> : <StyledFemaleIcon />}
-              </span>
-              <span className="profile">모더나</span>
-              <span className="dot">·</span>
-              <span className="profile">1차</span>
-              <span className="dot">·</span>
-              <span className="profile">20대</span>
-            </ProfileInfoWrap>
-            {/* 시간 남으면 1분전, 2시간전... 등 같이 만들어보기 */}
-            <PostItemDate>2021-10-14 / 13:33</PostItemDate>
-          </PostItemInfoWrap>
-        </ProfileWrap>
-        <PostContentWrap>
-          <PostCategory>후기</PostCategory>
-          <PostTitle>오늘 모더나 백신 맞고 왔습니다.</PostTitle>
-          <PostContent>
-            오늘 백신 맞고 왔습니다... 많이 아프네요.. 다들 힘내시길... <br />{" "}
-            힘내시길 바래요 힘내시길 바래요 힘내시길 바래요 힘내시길 바래요
-            힘내시길 바래요
-          </PostContent>
-          <PostTags>
-            <PostTagsItem>#모더나</PostTagsItem>
-            <PostTagsItem>#부작용</PostTagsItem>
-            <PostTagsItem>#아픔</PostTagsItem>
-          </PostTags>
-        </PostContentWrap>
-      </PostItemBlock>
+      <DetailContainer>
+        <DetailPostBlock>
+          <ProfileWrap>
+            <ProfileImageWrap>
+              <ProfileImage src={DefaultAvatar} />
+            </ProfileImageWrap>
+            <PostItemInfoWrap>
+              <ProfileInfoWrap>
+                <span className="nickName">
+                  이동훈
+                  {gender === "male" ? (
+                    <StyledMaleIcon />
+                  ) : (
+                    <StyledFemaleIcon />
+                  )}
+                </span>
+                <span className="profile">모더나</span>
+                <span className="dot">·</span>
+                <span className="profile">1차</span>
+                <span className="dot">·</span>
+                <span className="profile">20대</span>
+              </ProfileInfoWrap>
+              {/* 시간 남으면 1분전, 2시간전... 등 같이 만들어보기 */}
+              <PostItemDate>2021-10-14 / 13:33</PostItemDate>
+            </PostItemInfoWrap>
+          </ProfileWrap>
+          <PostContentWrap>
+            <PostCategory>후기</PostCategory>
+            <PostTitle>오늘 모더나 백신 맞고 왔습니다.</PostTitle>
+            <PostContent>
+              오늘 백신 맞고 왔습니다... 많이 아프네요.. 다들 힘내시길... <br />{" "}
+              힘내시길 바래요 힘내시길 바래요 힘내시길 바래요 힘내시길 바래요
+              힘내시길 바래요
+            </PostContent>
+            <PostTags>
+              <PostTagsItem>#모더나</PostTagsItem>
+              <PostTagsItem>#부작용</PostTagsItem>
+              <PostTagsItem>#아픔</PostTagsItem>
+            </PostTags>
+          </PostContentWrap>
+          <Comment />
+        </DetailPostBlock>
+      </DetailContainer>
     </DetailWrap>
   );
 }

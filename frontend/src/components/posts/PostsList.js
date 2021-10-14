@@ -5,6 +5,7 @@ import DefaultAvatar from "../../assets/global/profile.png";
 import palette from "../../libs/styles/palette";
 import { useHistory } from "react-router-dom";
 import { BsGenderMale, BsGenderFemale } from "react-icons/bs";
+import Comment from "../common/comment/Comment";
 import dayjs from "dayjs";
 dayjs.locale("ko");
 
