@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import Editor from "../../components/write/Editor";
-import PostContext from "../../context/PostContext";
+import PostsContext from "../../context/PostsContext";
 
 function EditorContainer() {
-  const { postInfo, setPostInfo } = useContext(PostContext);
+  const { postInfo, setPostInfo } = useContext(PostsContext);
   const { title, content } = postInfo;
   // tag, title, content, category
   const onChangeField = (payload) => {

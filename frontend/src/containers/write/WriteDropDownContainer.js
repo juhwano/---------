@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import WriteDropDown from "../../components/write/WriteDropDown";
-import PostContext from "../../context/PostContext";
+import PostsContext from "../../context/PostsContext";
 
 function WriteDropDownContainer() {
   const options = ["후기", "팁", "기타"];
 
-  const { postInfo, setPostInfo } = useContext(PostContext);
+  const { postInfo, setPostInfo } = useContext(PostsContext);
 
   const defaultOption = postInfo.category;
 

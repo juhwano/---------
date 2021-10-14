@@ -4,7 +4,7 @@ import ButtonComponent from "../common/ButtonComponent";
 import palette from "../../libs/styles/palette";
 import { BsPlusLg } from "react-icons/bs";
 import { useHistory } from "react-router";
-import PostContext from "../../context/PostContext";
+import PostsContext from "../../context/PostsContext";
 
 const StyledButton = styled(ButtonComponent)`
   width: 4rem;
@@ -27,7 +27,7 @@ const StyledIcon = styled(BsPlusLg)`
 
 function WriteButton() {
   const history = useHistory();
-  const { postInfo, setPostInfo } = useContext(PostContext);
+  const { postInfo, setPostInfo } = useContext(PostsContext);
   return (
     <StyledButton>
       <StyledIcon

@@ -1,10 +1,10 @@
 import React from "react";
 import { useContext } from "react";
 import TagBox from "../../components/write/TagBox";
-import PostContext from "../../context/PostContext";
+import PostsContext from "../../context/PostsContext";
 
 const TagBoxContainer = () => {
-  const { postInfo, setPostInfo } = useContext(PostContext);
+  const { postInfo, setPostInfo } = useContext(PostsContext);
   const tags = postInfo.tags;
 
   const onChangeTags = (nextTags) => {

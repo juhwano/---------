@@ -4,14 +4,14 @@ import { withRouter } from "react-router-dom";
 import WriteActionButton from "../../components/write/WriteActionButton";
 import client from "../../libs/api/_client";
 import { toast } from "react-toastify";
-import PostContext from "../../context/PostContext";
+import PostsContext from "../../context/PostsContext";
 export const url = "http://localhost:3000";
 
 // StyledButton cyan onClick={onPublish}>
 //         게시물 {isEdit ? "수정" : "등록"}
 //       </StyledButton>
 const WriteActionButtonsContainer = ({ history }) => {
-  const { postInfo, setPostInfo } = useContext(PostContext);
+  const { postInfo, setPostInfo } = useContext(PostsContext);
   const [isEdit, setIsEdit] = useState(false);
 
   // 카테고리 type 숫자일 시 진행(1)

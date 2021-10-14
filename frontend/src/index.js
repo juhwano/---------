@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import AuthProvider from "./context/providers/AuthProvider";
 import { createBrowserHistory } from "history";
-import PostProvider from "./context/providers/PostProvider";
+import PostsProvider from "./context/providers/PostsProvider";
 import ChatUserProvider from "./context/providers/chat/ChatUserProvider";
 import ChatRoomProvider from "./context/providers/chat/ChatRoomProvider";
 import ProfileProvider from "./context/providers/ProfileProvider";
@@ -34,13 +34,13 @@ ReactDOM.render(
       <ChatRoomProvider>
         <ChatUserProvider>
           <ProfileProvider>
-            <PostProvider>
+            <PostsProvider>
               <AuthProvider>
                 <Provider store={store}>
                   <App />
                 </Provider>
               </AuthProvider>
-            </PostProvider>
+            </PostsProvider>
           </ProfileProvider>
         </ChatUserProvider>
       </ChatRoomProvider>

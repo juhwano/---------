@@ -67,7 +67,7 @@ function EditProfile({
     { value: "female", label: "여자", key: "gender" },
   ];
 
-  const vachineOptions = [
+  const vaccineOptions = [
     { value: "MD", label: "모더나", key: "type" },
     { value: "PF", label: "화이자", key: "type" },
     { value: "AZ", label: "아스트라제네카", key: "type" },
@@ -116,7 +116,7 @@ function EditProfile({
           <BoldLabel>백신 선택</BoldLabel>
         </EditLabelWrap>
         <StyledDropDown
-          options={vachineOptions}
+          options={vaccineOptions}
           onChangeDropDown={onChangeDropDown}
           myPlaceholder={"백신을 선택 해주세요."}
         />

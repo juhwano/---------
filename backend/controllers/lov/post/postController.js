@@ -71,6 +71,7 @@ const postController = {
   },
   updateBoard: async (req, res) => {
     const userInfo = req.userInfo;
+    console.log();
     const { postId } = req.params;
     const { title, content, category, tags } = req.body;
 
