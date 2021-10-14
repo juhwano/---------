@@ -7,8 +7,6 @@ import SignUpPage from "./pages/SignUpPage";
 import { useContext, useEffect } from "react";
 import client from "./libs/api/_client";
 // import AddProfilePage from "./pages/EditProfilePage";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import WritePage from "./pages/WritePage";
 import Error from "./pages/Error";
@@ -20,6 +18,8 @@ import ChatRoomPage from "./pages/ChatRoomPage";
 import ChatPage from "./pages/ChatPage";
 import AuthContext from "./context/AuthContext";
 import ChatUserContext from "./context/chat/ChatUserContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContentContainer = styled.div`
   background: #fff;
@@ -43,8 +43,8 @@ function App() {
   //   isLoggedIn: user.isLoggedIn,
   // }));
   // 가져와서 useState와 똑같이 활용
-  const { authInfo, setAuthInfo } = useContext(AuthContext);
-  const { userName, setUserName } = useContext(ChatUserContext);
+  const { setAuthInfo } = useContext(AuthContext);
+  const { setUserName } = useContext(ChatUserContext);
   // const { roomName, setRoomName } = useContext(ChatRoomContext);
 
   // 통신 진행 후 상태변경(토큰 유무에 따라)
@@ -65,7 +65,7 @@ function App() {
       }
     }
     getAccount();
-  }, []);
+  }, [setAuthInfo, setUserName]);
 
   return (
     <>
@@ -91,21 +91,21 @@ function App() {
             <Route component={ChatPage} exact path="/chat" />
 
             <Route render={Error} />
-            <ToastContainer
-              position="bottom-center"
-              autoClose={2700}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover={false}
-              limit={2}
-            />
           </Switch>
         </ContentBlock>
       </ContentContainer>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        limit={2}
+      />
     </>
   );
 }

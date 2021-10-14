@@ -11,7 +11,7 @@ export const url = "http://localhost:3000";
 //         게시물 {isEdit ? "수정" : "등록"}
 //       </StyledButton>
 const WriteActionButtonsContainer = ({ history }) => {
-  const { resetPost, postInfo, setPostInfo } = useContext(PostContext);
+  const { postInfo, setPostInfo } = useContext(PostContext);
   const [isEdit, setIsEdit] = useState(false);
 
   // 카테고리 type 숫자일 시 진행(1)
@@ -58,7 +58,7 @@ const WriteActionButtonsContainer = ({ history }) => {
       //등록
       setIsEdit(false);
     }
-  }, []);
+  }, [postInfo, setPostInfo]);
 
   // isEdit을 분기처리
   const token = localStorage.getItem("accessToken");

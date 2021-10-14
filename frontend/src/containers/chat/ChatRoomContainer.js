@@ -42,8 +42,8 @@ const RoomButton = styled.button`
   margin-top: 20px;
 `;
 
-export default function ChatRoomContainer({ children }) {
-  const { userName, setUserName } = useContext(ChatUserContext);
+export default function ChatRoomContainer() {
+  const { userName } = useContext(ChatUserContext);
   const { roomName, setRoomName } = useContext(ChatRoomContext);
   // const handleUserNameChange = (e) => {
   //   setUserName(e.target.value);
@@ -51,7 +51,6 @@ export default function ChatRoomContainer({ children }) {
 
   const handleRoomNameChange = (e) => {
     setRoomName(e.target.value);
-    console.log(userName);
   };
 
   localStorage.setItem("userName", userName);

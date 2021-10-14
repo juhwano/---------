@@ -2,7 +2,6 @@ import React, { useCallback, useState } from "react";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ToastsStore } from "react-toasts";
 import AuthForm from "../../components/auth/AuthForm";
 import AuthContext from "../../context/AuthContext";
 import client from "../../libs/api/_client";
@@ -10,7 +9,7 @@ import client from "../../libs/api/_client";
 function SignInForm() {
   const history = useHistory();
   // context API 아무때나 불러올 수 있다
-  const { authInfo, setAuthInfo } = useContext(AuthContext);
+  const { setAuthInfo } = useContext(AuthContext);
 
   const [error, setError] = useState("");
   const [form, setForm] = useState({

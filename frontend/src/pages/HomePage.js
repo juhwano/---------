@@ -1,9 +1,9 @@
 import React from "react";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import WriteButton from "../components/write/WriteButton";
 
 function HomePage() {
-  const history = useHistory();
+  // const history = useHistory();
   return (
     <>
       <div>

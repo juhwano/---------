@@ -20,10 +20,10 @@ const NavSearchInput = styled.input`
   }
 `;
 
-const SearchInputWrap = styled.div`
-  position: relative;
-  margin-right: 1rem;
-`;
+// const SearchInputWrap = styled.div`
+//   position: relative;
+//   margin-right: 1rem;
+// `;
 
 const NavStyledIcon = styled.div`
   font-size: 2rem;

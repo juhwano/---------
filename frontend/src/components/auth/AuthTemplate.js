@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import palette from "../../libs/styles/palette";
 
 const AuthTemplateBlock = styled.div`

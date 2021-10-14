@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const StyledContainer = styled.div`
-  position: absolute;
-  bottom: 0rem;
-`;
+// const StyledContainer = styled.div`
+//   position: absolute;
+//   bottom: 0rem;
+// `;
 
 const StyledForm = styled.form`
   display: flex;

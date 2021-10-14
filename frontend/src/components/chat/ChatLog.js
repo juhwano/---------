@@ -21,6 +21,7 @@ const LeftInnerBarContainer = styled.div`
   align-items: center;
   margin-left: 5%;
   color: white;
+  /* background-color: red; */
 `;
 
 const RightInnerBarContainer = styled.div`
@@ -63,13 +64,13 @@ const ChatLog = ({ socket }) => {
     return () => {
       socket.disconnect();
     };
-  }, []);
+  }, [socket]);
 
   return (
     <>
       <BarContainer>
         <LeftInnerBarContainer>
-          <FaRocketchat />
+          <FaRocketchat size="36" />
           <h3>{roomName}</h3>
         </LeftInnerBarContainer>
         <RightInnerBarContainer>

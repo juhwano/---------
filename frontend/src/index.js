@@ -13,6 +13,7 @@ import { createBrowserHistory } from "history";
 import PostProvider from "./context/providers/PostProvider";
 import ChatUserProvider from "./context/providers/chat/ChatUserProvider";
 import ChatRoomProvider from "./context/providers/chat/ChatRoomProvider";
+import ProfileProvider from "./context/providers/ProfileProvider";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -32,13 +33,15 @@ ReactDOM.render(
     <BrowserRouter history={history}>
       <ChatRoomProvider>
         <ChatUserProvider>
-          <PostProvider>
-            <AuthProvider>
-              <Provider store={store}>
-                <App />
-              </Provider>
-            </AuthProvider>
-          </PostProvider>
+          <ProfileProvider>
+            <PostProvider>
+              <AuthProvider>
+                <Provider store={store}>
+                  <App />
+                </Provider>
+              </AuthProvider>
+            </PostProvider>
+          </ProfileProvider>
         </ChatUserProvider>
       </ChatRoomProvider>
     </BrowserRouter>

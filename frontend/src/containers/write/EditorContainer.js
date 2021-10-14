@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import Editor from "../../components/write/Editor";
 import PostContext from "../../context/PostContext";
-import client from "../../libs/api/_client";
 
 function EditorContainer() {
   const { postInfo, setPostInfo } = useContext(PostContext);

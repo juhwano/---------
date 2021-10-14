@@ -2,7 +2,6 @@ import React, { useCallback } from "react";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { toast } from "react-toastify";
-import { ToastsStore } from "react-toasts";
 import AuthForm from "../../components/auth/AuthForm";
 import client from "../../libs/api/_client";
 

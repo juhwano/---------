@@ -4,14 +4,14 @@ import Responsive from "./Responsive";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import MainLogo from "../../assets/logo/logo.png";
-import ButtonComponent from "./ButtonComponent";
-import SearchBox from "./search/SearchBox";
+// import ButtonComponent from "./ButtonComponent";
+// import SearchBox from "./search/SearchBox";
 import ProfileAvatar from "../../assets/global/profile.png";
 import {
   AiOutlineSearch,
   AiOutlineBell,
   AiOutlineComment,
-  AiOutlineMenu,
+  // AiOutlineMenu,
 } from "react-icons/ai";
 
 const NavbarWrap = styled.div`
@@ -194,13 +194,13 @@ const ProfileItem = styled.div`
   }
 `;
 
-const ProfileBtn = styled.button`
-  cursor: pointer;
-  border: none;
-  background-color: #fff;
-  font-size: 1rem;
-  text-align: center;
-`;
+// const ProfileBtn = styled.button`
+//   cursor: pointer;
+//   border: none;
+//   background-color: #fff;
+//   font-size: 1rem;
+//   text-align: center;
+// `;
 
 function NavbarComponent({
   authInfo,
@@ -209,7 +209,6 @@ function NavbarComponent({
   onClickLogout,
   onClickEditProfile,
 }) {
-  console.log("visible", visible);
   const history = useHistory();
   return (
     <>

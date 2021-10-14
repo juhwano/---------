@@ -1,6 +1,5 @@
 import React from "react";
 import { useContext } from "react";
-import { useState } from "react";
 import TagBox from "../../components/write/TagBox";
 import PostContext from "../../context/PostContext";
 
