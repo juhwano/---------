@@ -20,6 +20,7 @@ import AuthContext from "./context/AuthContext";
 import ChatUserContext from "./context/chat/ChatUserContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DetailPostPage from "./pages/DetailPostPage";
 
 const ContentContainer = styled.div`
   background: #fff;
@@ -84,6 +85,7 @@ function App() {
             {/* <Route component={RegisterPage} path="/register" /> */}
             <Route component={WritePage} exact path="/write" />
             {/* <Route component={PostPage} path="/@:username/:postId" /> */}
+            <Route component={DetailPostPage} exact path="/post/:postId" />
 
             {/* 채팅 대기실 */}
             <Route component={ChatRoomPage} exact path="/room" />

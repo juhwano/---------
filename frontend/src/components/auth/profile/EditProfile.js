@@ -51,15 +51,15 @@ function EditProfile({
 }) {
   const ageOptions = [
     { value: "영유아", label: "영유아", key: "age" },
-    { value: "10", label: "10대", key: "age" },
-    { value: "20", label: "20대", key: "age" },
-    { value: "30", label: "30대", key: "age" },
-    { value: "40", label: "40대", key: "age" },
-    { value: "50", label: "50대", key: "age" },
-    { value: "60", label: "60대", key: "age" },
-    { value: "70", label: "70대", key: "age" },
-    { value: "80", label: "80대", key: "age" },
-    { value: "90", label: "90대", key: "age" },
+    { value: "10대", label: "10대", key: "age" },
+    { value: "20대", label: "20대", key: "age" },
+    { value: "30대", label: "30대", key: "age" },
+    { value: "40대", label: "40대", key: "age" },
+    { value: "50대", label: "50대", key: "age" },
+    { value: "60대", label: "60대", key: "age" },
+    { value: "70대", label: "70대", key: "age" },
+    { value: "80대", label: "80대", key: "age" },
+    { value: "90대", label: "90대", key: "age" },
   ];
 
   const genderOptions = [
@@ -68,11 +68,11 @@ function EditProfile({
   ];
 
   const vaccineOptions = [
-    { value: "MD", label: "모더나", key: "type" },
-    { value: "PF", label: "화이자", key: "type" },
-    { value: "AZ", label: "아스트라제네카", key: "type" },
-    { value: "JS", label: "얀센", key: "type" },
-    { value: "ETC", label: "기타", key: "type" },
+    { value: "모더나", label: "모더나", key: "type" },
+    { value: "화이자", label: "화이자", key: "type" },
+    { value: "아스트라제네카", label: "아스트라제네카", key: "type" },
+    { value: "얀센", label: "얀센", key: "type" },
+    { value: "기타", label: "기타", key: "type" },
   ];
 
   const degreeOptions = [
