@@ -8,13 +8,10 @@ const RoomContainer = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
-  height: 100vh;
   align-items: center;
 `;
 
-const RoomWrapper = styled.div`
-  width: 20%;
-`;
+const RoomWrapper = styled.div``;
 
 const RoomInput = styled.input`
   border-radius: 0;

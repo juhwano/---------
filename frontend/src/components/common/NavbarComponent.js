@@ -24,12 +24,12 @@ const NavbarWrap = styled.div`
   background: #fff;
   border-bottom: 1px solid #dbdbdb;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-  height: 5rem;
+  height: 5.1rem;
   z-index: 1;
 `;
 
 const Wrapper = styled(Responsive)`
-  height: 5rem;
+  height: 5.1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,7 +65,7 @@ const StyledLogo = styled.img`
 `;
 
 const Spacer = styled.div`
-  height: 4rem;
+  height: 5.1rem;
 `;
 
 const StyledLinkButton = styled.button`

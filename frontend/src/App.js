@@ -23,19 +23,18 @@ import "react-toastify/dist/ReactToastify.css";
 import DetailPostPage from "./pages/DetailPostPage";
 
 const ContentContainer = styled.div`
-  background: #fff;
+  background: #f7f7f7;
 `;
 const ContentBlock = styled.div`
   max-width: 48rem;
-  /* min-height: 100vh; */
+  min-height: 100vh;
   border-color: #dbdbdb;
-  /* border-left: 1px solid #dbdbdb; */
-  /* border-right: 1px solid #dbdbdb; */
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
   background-color: #fff;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1rem;
 `;
 
 function App() {
@@ -74,28 +73,31 @@ function App() {
       <header>
         <NavbarContainer />
       </header>
-      <ContentContainer>
-        <ContentBlock>
-          <Switch>
-            <Route component={HomePage} exact path={["/@:username", "/"]} />
-            <Route component={SignInPage} exact path="/signin" />
-            <Route component={SignUpPage} exact path="/signup" />
-            <Route component={EditProfilePage} exact path="/edit/profile" />
+      {/* <div style={{ height: "1rem" }}></div> */}
+      <main>
+        <ContentContainer>
+          <ContentBlock>
+            <Switch>
+              <Route component={HomePage} exact path={["/@:username", "/"]} />
+              <Route component={SignInPage} exact path="/signin" />
+              <Route component={SignUpPage} exact path="/signup" />
+              <Route component={EditProfilePage} exact path="/edit/profile" />
 
-            {/* <Route component={RegisterPage} path="/register" /> */}
-            <Route component={WritePage} exact path="/write" />
-            {/* <Route component={PostPage} path="/@:username/:postId" /> */}
-            <Route component={DetailPostPage} exact path="/post/:postId" />
+              {/* <Route component={RegisterPage} path="/register" /> */}
+              <Route component={WritePage} exact path="/write" />
+              {/* <Route component={PostPage} path="/@:username/:postId" /> */}
+              <Route component={DetailPostPage} exact path="/post/:postId" />
 
-            {/* 채팅 대기실 */}
-            <Route component={ChatRoomPage} exact path="/room" />
-            {/* 채팅 */}
-            <Route component={ChatPage} exact path="/chat" />
+              {/* 채팅 대기실 */}
+              <Route component={ChatRoomPage} exact path="/room" />
+              {/* 채팅 */}
+              <Route component={ChatPage} exact path="/chat" />
 
-            <Route render={Error} />
-          </Switch>
-        </ContentBlock>
-      </ContentContainer>
+              <Route render={Error} />
+            </Switch>
+          </ContentBlock>
+        </ContentContainer>
+      </main>
       <ToastContainer
         position="bottom-center"
         autoClose={3000}
