@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import DefaultAvatar from "../../assets/global/profile.png";
 import { BsGenderMale } from "react-icons/bs";
 import { BsGenderFemale } from "react-icons/bs";
 import styled from "styled-components";
 import Responsive from "../common/Responsive";
 import Comment from "../common/comment/Comment";
+import AuthContext from "../../context/AuthContext";
 
 const DetailWrap = styled(Responsive)`
   margin-top: 3rem;
@@ -126,48 +127,50 @@ const PostTagsItem = styled.div`
   }
 `;
 
-function DetailPost(postInfo) {
-  const { gender } = postInfo;
+function DetailPost({ post, writer }) {
+  const { profileImage, gender, nickName, type, age, inoDate, degree } = writer;
+  const { content, publishedDate, category, title, tags } = post;
   return (
     <DetailWrap>
       <DetailContainer>
         <DetailPostBlock>
           <ProfileWrap>
             <ProfileImageWrap>
-              <ProfileImage src={DefaultAvatar} />
+              {profileImage ? (
+                <ProfileImage src={profileImage} />
+              ) : (
+                <ProfileImage src={DefaultAvatar} />
+              )}
             </ProfileImageWrap>
             <PostItemInfoWrap>
               <ProfileInfoWrap>
                 <span className="nickName">
-                  이동훈
+                  {nickName && nickName}
                   {gender === "male" ? (
                     <StyledMaleIcon />
                   ) : (
                     <StyledFemaleIcon />
                   )}
                 </span>
-                <span className="profile">모더나</span>
+                <span className="profile">{type && type}</span>
                 <span className="dot">·</span>
-                <span className="profile">1차</span>
+                <span className="profile">{degree && degree}</span>
                 <span className="dot">·</span>
-                <span className="profile">20대</span>
+                <span className="profile">{age && age}</span>
               </ProfileInfoWrap>
               {/* 시간 남으면 1분전, 2시간전... 등 같이 만들어보기 */}
-              <PostItemDate>2021-10-14 / 13:33</PostItemDate>
+              <PostItemDate>{publishedDate && publishedDate}</PostItemDate>
             </PostItemInfoWrap>
           </ProfileWrap>
           <PostContentWrap>
-            <PostCategory>후기</PostCategory>
-            <PostTitle>오늘 모더나 백신 맞고 왔습니다.</PostTitle>
-            <PostContent>
-              오늘 백신 맞고 왔습니다... 많이 아프네요.. 다들 힘내시길... <br />{" "}
-              힘내시길 바래요 힘내시길 바래요 힘내시길 바래요 힘내시길 바래요
-              힘내시길 바래요
-            </PostContent>
+            <PostCategory>{category && category}</PostCategory>
+            <PostTitle>{title && title}</PostTitle>
+            <PostContent
+              dangerouslySetInnerHTML={{ __html: content }}
+            ></PostContent>
             <PostTags>
-              <PostTagsItem>#모더나</PostTagsItem>
-              <PostTagsItem>#부작용</PostTagsItem>
-              <PostTagsItem>#아픔</PostTagsItem>
+              {tags &&
+                tags.map((item) => <PostTagsItem>{`#${item}`}</PostTagsItem>)}
             </PostTags>
           </PostContentWrap>
           <Comment />

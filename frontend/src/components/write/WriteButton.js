@@ -32,10 +32,10 @@ function WriteButton() {
     <StyledButton>
       <StyledIcon
         onClick={() => {
-          setPostInfo({
-            ...postInfo,
-            originalPostId: "61668cd21e2c4fc006c7978d",
-          });
+          // setPostInfo({
+          //   ...postInfo,
+          //   originalPostId: "61668cd21e2c4fc006c7978d",
+          // });
 
           history.push("/write");
         }}

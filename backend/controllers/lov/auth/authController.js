@@ -34,6 +34,24 @@ const authController = {
       });
     }
   },
+  freeReadUser: async (req, res) => {
+    const userInfo = req.body;
+    try {
+      if (userInfo) {
+        const result = await user.findOne({ userInfo });
+        res.status(code.OK).json({
+          message: '특정 유저 조회 성공',
+          data: result,
+        });
+      } else {
+        res.status(code.BAD_REQUEST).json({
+          message: '특정 유저 조회 실패',
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  },
   signUpUser: async (req, res) => {
     const { email, password, nickName } = req.body;
     try {

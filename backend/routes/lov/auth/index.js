@@ -20,6 +20,8 @@ router.post('/signin', authController.signInUser);
 
 // 전체 유저 조회
 router.get('/', authController.readAllUser);
+// 특정 유저 조회
+router.get('/info', authController.freeReadUser);
 // 회원가입
 router.post('/signup', authController.signUpUser);
 // 메일 발송

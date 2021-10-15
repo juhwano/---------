@@ -12,6 +12,7 @@ client.interceptors.response.use(
   },
   (error) => {
     const { status } = error.response;
+    console.log(error.response);
     console.log("status", status);
 
     if (status === 401) {
