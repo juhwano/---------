@@ -96,7 +96,7 @@ function Editor({
           theme="snow"
           modules={modules}
           formats={formats}
-          value={content}
+          value={content ?? ""}
           // onChangeBody가 한번 더 호출, 매개변수가 있으면 화살표 함수를 더 적어준다.
           onChange={(content, delta, source, editor) => {
             if (source === "user") {
